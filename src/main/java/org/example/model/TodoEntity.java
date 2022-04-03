@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -12,15 +12,20 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 
 public class TodoEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     //todo의 번호를 매길수있는 id 값
 
+    @Column(nullable = false)
     private String title;
     //todo의 제목
 
+    @Column(name = "todoOrder", nullable = false)
     private Long order;
     //todo만든 날짜
 
+    @Column(nullable = false)
     private Boolean completed;
     //todo를 완료했는지 안했는지.
 
